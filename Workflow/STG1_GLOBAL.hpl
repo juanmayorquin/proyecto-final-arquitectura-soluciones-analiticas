@@ -37,7 +37,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${PROJECT_HOME}\..\Fuentes\Comercio_CultivosProductosGanaderia_S_Todos_los_Datos_(Normalizado).csv</filename>
+    <filename>${PROJECT_HOME}/Fuentes/Comercio_CultivosProductosGanaderia_S_Todos_los_Datos_(Normalizado).csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -176,8 +176,8 @@
     </fields>
     <attributes/>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>320</yloc>
+      <xloc>384</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform>
@@ -254,8 +254,8 @@
     <use_batch>Y</use_batch>
     <attributes/>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>320</yloc>
+      <xloc>800</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform_error_handling>

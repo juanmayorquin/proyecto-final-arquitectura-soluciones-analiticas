@@ -22,166 +22,15 @@
   <order>
     <hop>
       <from>STG4_HECHOS_COMERCIO</from>
-      <to>FILTRAR_NO_NULOS</to>
+      <to>Script</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>FILTRAR_NO_NULOS</from>
-      <to>FILTRAR_AGREGADOS</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>FILTRAR_AGREGADOS</from>
-      <to>CALCULAR_MEDIANA</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>CALCULAR_MEDIANA</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>FILTRAR_NO_NULOS</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Stream lookup</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula</from>
+      <from>Script</from>
       <to>STG5_HECHOS_COMERCIO</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <transform>
-    <name>CALCULAR_MEDIANA</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <add_linenr>N</add_linenr>
-    <all_rows>N</all_rows>
-    <directory>${java.io.tmpdir}</directory>
-    <fields>
-      <field>
-        <aggregate>mediana_calculada</aggregate>
-        <subject>valor</subject>
-        <type>MEDIAN</type>
-      </field>
-    </fields>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>categoria</name>
-      </field>
-    </group>
-    <ignore_aggregate>N</ignore_aggregate>
-    <prefix>grp</prefix>
-    <attributes/>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>192</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>FILTRAR_AGREGADOS</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compare>
-      <condition>
-        <conditions>
-</conditions>
-        <function>=</function>
-        <leftvalue>categoria</leftvalue>
-        <negated>N</negated>
-        <operator>-</operator>
-        <value>
-          <isnull>N</isnull>
-          <length>-1</length>
-          <name>constant</name>
-          <precision>-1</precision>
-          <text>AGREGADO</text>
-          <type>String</type>
-        </value>
-      </condition>
-    </compare>
-    <send_true_to>CALCULAR_MEDIANA</send_true_to>
-    <attributes/>
-    <GUI>
-      <xloc>672</xloc>
-      <yloc>192</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>FILTRAR_NO_NULOS</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compare>
-      <condition>
-        <conditions>
-</conditions>
-        <function>IS NOT NULL</function>
-        <leftvalue>valor</leftvalue>
-        <negated>N</negated>
-        <operator>-</operator>
-      </condition>
-    </compare>
-    <send_false_to>Stream lookup</send_false_to>
-    <send_true_to>FILTRAR_AGREGADOS</send_true_to>
-    <attributes/>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>192</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>Formula</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formulas>
-      <formula>
-        <formula>IF(ISBLANK([valor]); [mediana_valor]; [valor])</formula>
-        <set_na>N</set_na>
-        <value_length>-1</value_length>
-        <value_precision>-1</value_precision>
-        <value_type>0</value_type>
-      </formula>
-    </formulas>
-    <attributes/>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>368</yloc>
-    </GUI>
-  </transform>
   <transform>
     <name>STG4_HECHOS_COMERCIO</name>
     <type>TableInput</type>
@@ -201,8 +50,8 @@ FROM stg4_hechos_comercio</sql>
     <variables_active>N</variables_active>
     <attributes/>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>192</yloc>
+      <xloc>144</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform>
@@ -259,13 +108,13 @@ FROM stg4_hechos_comercio</sql>
     <use_batch>Y</use_batch>
     <attributes/>
     <GUI>
-      <xloc>1200</xloc>
-      <yloc>368</yloc>
+      <xloc>672</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
+    <name>Script</name>
+    <type>SuperScript</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -274,23 +123,57 @@ FROM stg4_hechos_comercio</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <from>CALCULAR_MEDIANA</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <value>
-        <name>mediana_calculada</name>
-        <rename>mediana_valor</rename>
-        <default>0</default>
-        <type>Number</type>
-      </value>
-    </lookup>
+    <fields>
+</fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody># Variables globales
+valores = []
+mediana = None
+
+def process_rows(row):
+    global valores
+    simbolo = row.get("simbolos", None)
+    valor = row.get("valor", None)
+
+    # Guardamos solo si es "agregado" y no es nulo
+    if simbolo == "agregado" and valor is not None:
+        valores.append(float(valor))
+
+    return row
+
+def end_processing():
+    global mediana
+    if valores:
+        sorted_vals = sorted(valores)
+        n = len(sorted_vals)
+        mid = n // 2
+
+        if n % 2 == 0:
+            mediana = (sorted_vals[mid - 1] + sorted_vals[mid]) / 2.0
+        else:
+            mediana = sorted_vals[mid]
+
+def process_after(row):
+    global mediana
+    simbolo = row.get("simbolos", None)
+    valor = row.get("valor", None)
+
+    # Si es "agregado" y valor está vacío, reemplazar con la mediana
+    if simbolo == "agregado" and (valor is None or valor == ""):
+        row["valor"] = mediana
+
+    return row
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
     <attributes/>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>368</yloc>
+      <xloc>416</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform_error_handling>
