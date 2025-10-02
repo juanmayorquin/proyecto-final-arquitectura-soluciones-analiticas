@@ -31,7 +31,7 @@
       <attributes_hac/>
     </action>
     <action>
-      <name>SGT1_TIEMPO_IMP.hpl</name>
+      <name>STG1_TIEMPO_IMP</name>
       <description/>
       <type>PIPELINE</type>
       <attributes/>
@@ -59,7 +59,7 @@
       <attributes_hac/>
     </action>
     <action>
-      <name>FINAL_TIEMPO_IMP.hpl</name>
+      <name>FINAL_TIEMPO_IMP</name>
       <description/>
       <type>PIPELINE</type>
       <attributes/>
@@ -70,8 +70,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/FINAL_TIEMPO_IMP.hpl</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -90,14 +88,14 @@
   <hops>
     <hop>
       <from>Start</from>
-      <to>SGT1_TIEMPO_IMP.hpl</to>
+      <to>STG1_TIEMPO_IMP</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>SGT1_TIEMPO_IMP.hpl</from>
-      <to>FINAL_TIEMPO_IMP.hpl</to>
+      <from>STG1_TIEMPO_IMP</from>
+      <to>FINAL_TIEMPO_IMP</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>

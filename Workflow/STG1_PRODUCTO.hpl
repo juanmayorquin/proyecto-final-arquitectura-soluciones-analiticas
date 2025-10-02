@@ -21,7 +21,7 @@
   </notepads>
   <order>
     <hop>
-      <from>STG_GLOBAL</from>
+      <from>STG1_GLOBAL</from>
       <to>STG1_PRODUCTO</to>
       <enabled>Y</enabled>
     </hop>
@@ -53,14 +53,11 @@
     <only_when_have_rows>N</only_when_have_rows>
     <partitioning_daily>N</partitioning_daily>
     <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
     <partitioning_monthly>Y</partitioning_monthly>
-    <return_field/>
     <return_keys>N</return_keys>
     <schema>"public"</schema>
     <specify_fields>Y</specify_fields>
     <table>stg1_producto</table>
-    <tablename_field/>
     <tablename_in_field>N</tablename_in_field>
     <tablename_in_table>Y</tablename_in_table>
     <truncate>Y</truncate>
@@ -72,7 +69,7 @@
     </GUI>
   </transform>
   <transform>
-    <name>STG_GLOBAL</name>
+    <name>STG1_GLOBAL</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -88,7 +85,7 @@
     <sql>SELECT distinct
 codigo_producto, 
 producto
-FROM stg_global </sql>
+FROM stg1_global </sql>
     <variables_active>N</variables_active>
     <attributes/>
     <GUI>

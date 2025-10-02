@@ -42,8 +42,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/STG1_GLOBAL.hpl</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -68,6 +66,30 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/ELEMENTO.hwf</filename>
+      <loglevel>Nothing</loglevel>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <params_from_previous>N</params_from_previous>
+      <run_configuration>local</run_configuration>
+      <set_append_logfile>N</set_append_logfile>
+      <set_logfile>N</set_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <parallel>N</parallel>
+      <xloc>352</xloc>
+      <yloc>144</yloc>
+      <attributes_hac/>
+    </action>
+    <action>
+      <name>PRODUCTO</name>
+      <description/>
+      <type>WORKFLOW</type>
+      <attributes/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <create_parent_folder>N</create_parent_folder>
+      <exec_per_row>N</exec_per_row>
+      <filename>${PROJECT_HOME}/PRODUCTO.hwf</filename>
       <logext/>
       <logfile/>
       <loglevel>Nothing</loglevel>
@@ -80,7 +102,7 @@
       <set_logfile>N</set_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <parallel>N</parallel>
-      <xloc>352</xloc>
+      <xloc>528</xloc>
       <yloc>144</yloc>
       <attributes_hac/>
     </action>
@@ -96,6 +118,13 @@
     <hop>
       <from>STG1_GLOBAL</from>
       <to>ELEMENTO</to>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>ELEMENTO</from>
+      <to>PRODUCTO</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>

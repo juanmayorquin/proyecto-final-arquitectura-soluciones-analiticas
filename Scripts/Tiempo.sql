@@ -3,8 +3,6 @@ create table stg1_tiempo_imp
     id_ano integer,
     ano integer
 );
-alter table stg1_principal
-    owner to arq;
 
 create table stg2_tiempo_imp
 (
@@ -12,14 +10,8 @@ create table stg2_tiempo_imp
     ano integer
 );
 
-alter table stg1_tiempo_imp
-    owner to arq;
-
 create table tiempo_imp
 (
-    id_ano integer,
+    id_ano integer primary key,
     ano integer
 );
-
-alter table stg1_principal
-    owner to arq;
