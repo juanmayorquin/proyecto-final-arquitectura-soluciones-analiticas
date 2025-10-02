@@ -47,9 +47,7 @@
         <case_sensitive>N</case_sensitive>
         <in_stream_name>elemento</in_stream_name>
         <is_unicode>N</is_unicode>
-        <out_stream_name/>
         <replace_by_string>Exportaciones - Valor</replace_by_string>
-        <replace_field_by_string/>
         <replace_string>Exportaciones Valor</replace_string>
         <set_empty_string>N</set_empty_string>
         <use_regex>N</use_regex>
@@ -59,9 +57,7 @@
         <case_sensitive>N</case_sensitive>
         <in_stream_name>elemento</in_stream_name>
         <is_unicode>N</is_unicode>
-        <out_stream_name/>
         <replace_by_string>Importaciones - Valor</replace_by_string>
-        <replace_field_by_string/>
         <replace_string>Importaciones Valor</replace_string>
         <set_empty_string>N</set_empty_string>
         <use_regex>N</use_regex>
@@ -71,9 +67,7 @@
         <case_sensitive>N</case_sensitive>
         <in_stream_name>elemento</in_stream_name>
         <is_unicode>N</is_unicode>
-        <out_stream_name/>
         <replace_by_string>Exportaciones - Cantidad</replace_by_string>
-        <replace_field_by_string/>
         <replace_string>Exportaciones - Canditad</replace_string>
         <set_empty_string>N</set_empty_string>
         <use_regex>N</use_regex>
@@ -100,7 +94,7 @@
     <connection>DWH</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
-    <sql>SELECT DISTINCT id_elemento, elemento, unidad
+    <sql>SELECT id_elemento, elemento, unidad
 FROM stg1_elemento
 ORDER BY id_elemento;</sql>
     <variables_active>N</variables_active>
