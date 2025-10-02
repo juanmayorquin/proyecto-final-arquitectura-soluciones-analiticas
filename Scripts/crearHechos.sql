@@ -47,3 +47,12 @@ CREATE TABLE stg5_hechos_comercio (
     valor        NUMERIC,
     categoria    VARCHAR(100)
 );
+
+CREATE TABLE hechos_comercio (
+    id_area      INT,
+    id_producto  INT,
+    id_elemento  INT,
+    id_anio      INT,
+    valor        NUMERIC,
+    categoria    VARCHAR(100)
+);
