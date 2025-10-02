@@ -42,7 +42,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/scripts/STG1_PAÍS.hpl</filename>
+      <filename>${PROJECT_HOME}/STG1_PAÍS.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -70,7 +70,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/scripts/STG2_PAÍS.hpl</filename>
+      <filename>${PROJECT_HOME}/STG2_PAÍS.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -98,7 +98,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/scripts/STG3_PAÍS.hpl</filename>
+      <filename>${PROJECT_HOME}/STG3_PAÍS.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -126,7 +126,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/scripts/PAÍS_FINAL.hpl</filename>
+      <filename>${PROJECT_HOME}/PAÍS_FINAL.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>

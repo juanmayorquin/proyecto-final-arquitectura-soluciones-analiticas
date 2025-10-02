@@ -4,9 +4,6 @@ create table stg1_pais
     "Área"        varchar(100)
 );
 
-alter table stg1_pais
-    owner to arq;
-
 CREATE TABLE stg2_pais (
     id_area BIGINT,
     area        VARCHAR(100)
@@ -18,6 +15,6 @@ CREATE TABLE stg3_pais (
 );
 
 CREATE TABLE pais (
-    id_area BIGINT,
+    id_area BIGINT PRIMARY KEY,
     area VARCHAR(100)
 );
