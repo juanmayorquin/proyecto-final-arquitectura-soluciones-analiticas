@@ -20,3 +20,30 @@ CREATE TABLE stg2_hechos_comercio (
     valor        NUMERIC,
     simbolo      VARCHAR(50)
 );
+
+CREATE TABLE stg3_hechos_comercio (
+    id_area      INT,
+    id_producto  INT,
+    id_elemento  INT,
+    id_anio      INT,
+    valor        NUMERIC,
+    categoria    VARCHAR(100)
+);
+
+CREATE TABLE stg4_hechos_comercio (
+    id_area      INT,
+    id_producto  INT,
+    id_elemento  INT,
+    id_anio      INT,
+    valor        NUMERIC,
+    categoria    VARCHAR(100)
+);
+
+CREATE TABLE stg5_hechos_comercio (
+    id_area      INT,
+    id_producto  INT,
+    id_elemento  INT,
+    id_anio      INT,
+    valor        NUMERIC,
+    categoria    VARCHAR(100)
+);

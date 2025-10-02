@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pipeline>
   <info>
-    <name>STG3_PAÍS</name>
-    <name_sync_with_filename>N</name_sync_with_filename>
+    <name>STG3_HECHOS_COMERCIO</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
     <description/>
     <extended_description/>
     <pipeline_version/>
     <pipeline_type>Normal</pipeline_type>
-    <pipeline_status>0</pipeline_status>
     <parameters>
     </parameters>
     <capture_transform_performance>N</capture_transform_performance>
     <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
     <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
     <created_user>-</created_user>
-    <created_date>2025/09/29 20:42:49.719</created_date>
+    <created_date>2025/10/02 00:50:21.042</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2025/09/29 20:42:49.719</modified_date>
+    <modified_date>2025/10/02 00:50:21.042</modified_date>
   </info>
   <notepads>
   </notepads>
   <order>
     <hop>
-      <from>FORMATEAR_TEXTO</from>
-      <to>TRANSFORMAR_MAYUSCULAS</to>
+      <from>STG2_HECHOS_COMERCIO</from>
+      <to>MAPEAR_SIMBOLOS</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>TRANSFORMAR_MAYUSCULAS</from>
-      <to>STG2_PAIS</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>STG1_PAIS</from>
-      <to>FORMATEAR_TEXTO</to>
+      <from>MAPEAR_SIMBOLOS</from>
+      <to>STG3_HECHOS_COMERCIO</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <transform>
-    <name>FORMATEAR_TEXTO</name>
-    <type>ReplaceString</type>
+    <name>MAPEAR_SIMBOLOS</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -48,35 +42,44 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <field_to_use>simbolo</field_to_use>
     <fields>
       <field>
-        <case_sensitive>N</case_sensitive>
-        <in_stream_name>area</in_stream_name>
-        <is_unicode>N</is_unicode>
-        <replace_string>\s*\([^)]*\)</replace_string>
-        <set_empty_string>N</set_empty_string>
-        <use_regex>Y</use_regex>
-        <whole_word>N</whole_word>
+        <source_value>*</source_value>
+        <target_value>CIFRAS NO OFICIALES</target_value>
       </field>
       <field>
-        <case_sensitive>N</case_sensitive>
-        <in_stream_name>area</in_stream_name>
-        <is_unicode>N</is_unicode>
-        <replace_by_string>_</replace_by_string>
-        <replace_string>-</replace_string>
-        <set_empty_string>N</set_empty_string>
-        <use_regex>N</use_regex>
-        <whole_word>N</whole_word>
+        <source_value>A</source_value>
+        <target_value>AGREGADO</target_value>
+      </field>
+      <field>
+        <source_value>F</source_value>
+        <target_value>ESTIMACION FAO</target_value>
+      </field>
+      <field>
+        <source_value>Im</source_value>
+        <target_value>DATOS DE FAO BASADOS EN UNA METODOLOGIA DE IMPUTACION</target_value>
+      </field>
+      <field>
+        <source_value>M</source_value>
+        <target_value>DATOS NO DISPONIBLES</target_value>
+      </field>
+      <field>
+        <source_value>R</source_value>
+        <target_value>DATOS ESTIMADOS ULIZANDO LA BASE DE DATOS DE LOS PAISES SOCIOS</target_value>
+      </field>
+      <field>
+        <target_value>DATOS OFICIALES</target_value>
       </field>
     </fields>
     <attributes/>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>176</yloc>
+      <xloc>496</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform>
-    <name>STG1_PAIS</name>
+    <name>STG2_HECHOS_COMERCIO</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -89,17 +92,17 @@
     <connection>DWH</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
-    <sql>SELECT id_area, area
-FROM stg1_pais</sql>
+    <sql>SELECT * 
+FROM stg2_hechos_comercio</sql>
     <variables_active>N</variables_active>
     <attributes/>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>176</yloc>
+      <xloc>272</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform>
-    <name>STG2_PAIS</name>
+    <name>STG3_HECHOS_COMERCIO</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -117,62 +120,43 @@ FROM stg1_pais</sql>
         <stream_name>id_area</stream_name>
       </field>
       <field>
-        <column_name>area</column_name>
-        <stream_name>area</stream_name>
+        <column_name>id_producto</column_name>
+        <stream_name>id_producto</stream_name>
+      </field>
+      <field>
+        <column_name>id_elemento</column_name>
+        <stream_name>id_elemento</stream_name>
+      </field>
+      <field>
+        <column_name>id_anio</column_name>
+        <stream_name>id_anio</stream_name>
+      </field>
+      <field>
+        <column_name>valor</column_name>
+        <stream_name>valor</stream_name>
+      </field>
+      <field>
+        <column_name>categoria</column_name>
+        <stream_name>simbolo</stream_name>
       </field>
     </fields>
     <ignore_errors>N</ignore_errors>
     <only_when_have_rows>N</only_when_have_rows>
     <partitioning_daily>N</partitioning_daily>
     <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
     <partitioning_monthly>Y</partitioning_monthly>
-    <return_field/>
     <return_keys>N</return_keys>
-    <schema>public</schema>
+    <schema>"public"</schema>
     <specify_fields>Y</specify_fields>
-    <table>stg2_pais</table>
-    <tablename_field/>
+    <table>stg3_hechos_comercio</table>
     <tablename_in_field>N</tablename_in_field>
     <tablename_in_table>Y</tablename_in_table>
     <truncate>Y</truncate>
     <use_batch>Y</use_batch>
     <attributes/>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>176</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>TRANSFORMAR_MAYUSCULAS</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>area</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-    </fields>
-    <attributes/>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>176</yloc>
+      <xloc>736</xloc>
+      <yloc>224</yloc>
     </GUI>
   </transform>
   <transform_error_handling>

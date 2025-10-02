@@ -22,7 +22,7 @@
   </notepads>
   <order>
     <hop>
-      <from>STG3_PAIS</from>
+      <from>STG2_PAIS</from>
       <to>FINAL_PAÍS</to>
       <enabled>Y</enabled>
     </hop>
@@ -73,7 +73,7 @@
     </GUI>
   </transform>
   <transform>
-    <name>STG3_PAIS</name>
+    <name>STG2_PAIS</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -89,7 +89,7 @@
     <sql>SELECT
   id_area
 , area
-FROM stg3_pais
+FROM stg2_pais
 EXCEPT SELECT
   id_area
 , area
