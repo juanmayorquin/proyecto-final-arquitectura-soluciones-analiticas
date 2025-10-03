@@ -42,7 +42,9 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/STG1_PAÍS.hpl</filename>
+      <filename>${PROJECT_HOME}/Workflow/STG1_PAÍS.hpl</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -68,7 +70,9 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/STG2_PAÍS.hpl</filename>
+      <filename>${PROJECT_HOME}/Workflow/STG2_PAÍS.hpl</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -94,7 +98,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/PAÍS_FINAL.hpl</filename>
+      <filename>${PROJECT_HOME}/Workflow/PAÍS_FINAL.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>

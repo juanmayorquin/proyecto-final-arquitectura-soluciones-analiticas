@@ -32,6 +32,68 @@
     </hop>
   </order>
   <transform>
+    <name>REEMPLAZAR_NULOS</name>
+    <type>SuperScript</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+</fields>
+    <scriptLanguage>python</scriptLanguage>
+    <scripts>
+      <script>
+        <scriptBody># Variables globales
+valores = []
+mediana = None
+
+def process_rows(row):
+    global valores
+    simbolo = row.get("simbolos", None)
+    valor = row.get("valor", None)
+
+    if simbolo == "agregado" and valor is not None:
+        valores.append(float(valor))
+
+    return row
+
+def end_processing():
+    global mediana
+    if valores:
+        sorted_vals = sorted(valores)
+        n = len(sorted_vals)
+        mid = n // 2
+
+        if n % 2 == 0:
+            mediana = (sorted_vals[mid - 1] + sorted_vals[mid]) / 2.0
+        else:
+            mediana = sorted_vals[mid]
+
+def process_after(row):
+    global mediana
+    simbolo = row.get("simbolos", None)
+    valor = row.get("valor", None)
+
+    if simbolo == "agregado" and (valor is None or valor == ""):
+        row["valor"] = mediana
+
+    return row
+</scriptBody>
+        <scriptName>script1</scriptName>
+        <scriptType>0</scriptType>
+      </script>
+    </scripts>
+    <attributes/>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>224</yloc>
+    </GUI>
+  </transform>
+  <transform>
     <name>STG4_HECHOS_COMERCIO</name>
     <type>TableInput</type>
     <description/>
@@ -109,70 +171,6 @@ FROM stg4_hechos_comercio</sql>
     <attributes/>
     <GUI>
       <xloc>672</xloc>
-      <yloc>224</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>REEMPLAZAR_NULOS</name>
-    <type>SuperScript</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-</fields>
-    <scriptLanguage>python</scriptLanguage>
-    <scripts>
-      <script>
-        <scriptBody># Variables globales
-valores = []
-mediana = None
-
-def process_rows(row):
-    global valores
-    simbolo = row.get("simbolos", None)
-    valor = row.get("valor", None)
-
-    # Guardamos solo si es "agregado" y no es nulo
-    if simbolo == "agregado" and valor is not None:
-        valores.append(float(valor))
-
-    return row
-
-def end_processing():
-    global mediana
-    if valores:
-        sorted_vals = sorted(valores)
-        n = len(sorted_vals)
-        mid = n // 2
-
-        if n % 2 == 0:
-            mediana = (sorted_vals[mid - 1] + sorted_vals[mid]) / 2.0
-        else:
-            mediana = sorted_vals[mid]
-
-def process_after(row):
-    global mediana
-    simbolo = row.get("simbolos", None)
-    valor = row.get("valor", None)
-
-    # Si es "agregado" y valor está vacío, reemplazar con la mediana
-    if simbolo == "agregado" and (valor is None or valor == ""):
-        row["valor"] = mediana
-
-    return row
-</scriptBody>
-        <scriptName>script1</scriptName>
-        <scriptType>0</scriptType>
-      </script>
-    </scripts>
-    <attributes/>
-    <GUI>
-      <xloc>416</xloc>
       <yloc>224</yloc>
     </GUI>
   </transform>

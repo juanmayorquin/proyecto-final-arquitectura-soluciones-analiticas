@@ -41,9 +41,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/SGT1_TIEMPO_IMP.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>${PROJECT_HOME}/Workflow/SGT1_TIEMPO_IMP.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -55,7 +53,7 @@
       <wait_until_finished>Y</wait_until_finished>
       <parallel>N</parallel>
       <xloc>192</xloc>
-      <yloc>80</yloc>
+      <yloc>48</yloc>
       <attributes_hac/>
     </action>
     <action>
@@ -69,7 +67,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/FINAL_TIEMPO_IMP.hpl</filename>
+      <filename>${PROJECT_HOME}/Workflow/FINAL_TIEMPO_IMP.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -81,7 +79,7 @@
       <wait_until_finished>Y</wait_until_finished>
       <parallel>N</parallel>
       <xloc>368</xloc>
-      <yloc>80</yloc>
+      <yloc>48</yloc>
       <attributes_hac/>
     </action>
   </actions>
